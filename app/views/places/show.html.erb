@@ -4,25 +4,26 @@
  <a href="/posts/new?place_id=<%=@place.id%>" class="btn btn-success">Add a new post for this location?</a>
 </p>
 
+<div class="row">
+  <% for post in @place.posts %>
+    <div class="col-md-4">
 
+      <h4>
+        <%="#{post.title}"%>
+      </h4>
 
- <ul>
-   <% for post in  @place.posts%>
-    <li>
-    <b>
-    <%="#{post.title}"%> 
-    </b>
-    <br> 
-    <%="#{post.description}"%> 
-    <br>
-    <% if post.uploaded_image.attached? %>
-      <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
-    <% end %>
-    <br>
-    <%="Posted on #{post.posted_on}"%>
-    </li>
-   <% end %>
-</ul>
+      <p>
+        <%="#{post.description}"%>
+      </p>
+
+      <% if post.uploaded_image.attached? %>
+        <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+      <% end %>
+
+      <p><%="Posted on #{post.posted_on}"%></p>
+    </div>
+  <% end %>
+</div>
 
 <p>
  <a href="/places" class="btn btn-success">Return to Home Page</a>
