@@ -1,19 +1,27 @@
 <h1><%= @place.name %></h1>
 
-<h2>My Posts</h2>
-<% for post in @place.posts %>
-  <h3><%= post.title %></h3>
-  <h4><%= post.posted_on %></h4>
-  <p><%= post.description %></p>
-      <% if post.uploaded_image.attached? %>
-        <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
-      <% end %>
-<% end %>
-
 <p>
-  <a href="/posts/new?place_id=<%= @place.id %>">New Post</a>
+ <a href="/posts/new?place_id=<%=@place.id%>">Add a new post for this location?</a>
 </p>
 
+ <ul>
+   <% for post in  @place.posts%>
+    <li>
+    <b>
+    <%="#{post.title}"%> 
+    </b>
+    <br> 
+    <%="#{post.description}"%> 
+    <br>
+    <% if post.uploaded_image.attached? %>
+      <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+    <% end %>
+    <br>
+    <%="Posted on #{post.posted_on}"%>
+    </li>
+   <% end %>
+</ul>
+
 <p>
-  <a href="/places">Back to All Places</a>
+ <a href="/places">Return to Home Page</a>
 </p>
