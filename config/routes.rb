@@ -3,5 +3,9 @@ Rails.application.routes.draw do
   resources :users
   resources :places
   resources :posts
-  root to: "places#index"
+  if @current_user
+    root to: "places#index"
+  else 
+    root to: "users#new"
+  end
 end
