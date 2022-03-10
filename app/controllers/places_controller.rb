@@ -18,7 +18,7 @@ class PlacesController < ApplicationController
       @place.save
       redirect_to "/places" 
     else
-      flash[:notice] = "Login first."
+      flash[:notice] = "You need to Login before you can add any places!"
       redirect_to "/users/new"
     end
   end
