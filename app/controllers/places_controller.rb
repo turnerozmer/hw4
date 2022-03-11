@@ -15,6 +15,7 @@ class PlacesController < ApplicationController
   def create
     if @current_user
       @place = Place.new(params["place"])
+      @place.user_id = session[:user_id]
       @place.save
       redirect_to "/places" 
     else
