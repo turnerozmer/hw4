@@ -10,7 +10,7 @@
   </div>
 
   <ul>
-    <% for place in @places.where({user_id: session[:user_id]}) %>
+    <% for place in @places.where({ user_id: session[:user_id]}) %>
       <li><a href="/places/<%= place.id %>"><%= place.name %></a></li>
     <% end %>
   </ul>
